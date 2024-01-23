@@ -1,6 +1,9 @@
 package dip1;
 
 import dip1.model.Report;
+import dip1.model.ReportManager;
+import dip1.model.util.ConsoleReporter;
+import dip1.model.util.PrinterReporter;
 import logger.Log;
 
 import java.util.logging.Level;
@@ -12,6 +15,8 @@ public class Main {
         log.log(Level.INFO, "Method main in model package started");
         Report report = new Report();
         report.calculate();
-        report.output();
+        ConsoleReporter cr = new ConsoleReporter();
+        ReportManager rm = new ReportManager(cr);
+        rm.output(report.getItems());
     }
 }
